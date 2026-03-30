@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://btuacl25l186j"]
+
+[ext_resource type="Script" uid="uid://pqq4sml6qkic" path="res://character_body_2d.gd" id="1_t8lke"]
+[ext_resource type="Texture2D" uid="uid://ci2vyh764sb08" path="res://outline_1/sm_quieto_1.png" id="2_apd2t"]
+[ext_resource type="Texture2D" uid="uid://c4uaoemu2mvni" path="res://outline_1/sm_quieto_2.png" id="3_rq8n4"]
+[ext_resource type="Texture2D" uid="uid://doxmg0ttf1c4l" path="res://outline_1/sm_quieto_3.png" id="4_tec4y"]
+[ext_resource type="Texture2D" uid="uid://d3h32bufqfuyo" path="res://outline_1/sm_salto_1.png" id="5_cddf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g76pc"]
+size = Vector2(38, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l63k4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_apd2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rq8n4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tec4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cddf7")
+}],
+"loop": true,
+"name": &"Quieto",
+"speed": 5.0
+}]
+
+[node name="Raiz" type="Node2D" unique_id=492287694]
+
+[node name="Jugador" type="Node2D" parent="." unique_id=2140989261]
+position = Vector2(518, 198)
+
+[node name="Jugador_personaje" type="CharacterBody2D" parent="Jugador" unique_id=31355151]
+position = Vector2(44, -1)
+script = ExtResource("1_t8lke")
+
+[node name="HitBox" type="CollisionShape2D" parent="Jugador/Jugador_personaje" unique_id=424645358]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_g76pc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jugador/Jugador_personaje" unique_id=1115771986]
+position = Vector2(55, -36)
+sprite_frames = SubResource("SpriteFrames_l63k4")
+animation = &"Quieto"
+frame_progress = 0.6279289
