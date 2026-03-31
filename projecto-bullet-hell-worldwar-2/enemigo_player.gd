@@ -12,14 +12,14 @@ func _physics_process(delta):
 	var direccion_Y = 0
 	var direccion_X = 0
 	
-	if Input.is_physical_key_pressed(KEY_W) and not esta_atacando:
+	if Input.is_physical_key_pressed(KEY_UP) and not esta_atacando:
 		direccion_Y -= 1
-	if Input.is_physical_key_pressed(KEY_S) and not esta_atacando:
+	if Input.is_physical_key_pressed(KEY_DOWN) and not esta_atacando:
 		direccion_Y += 1
-	if Input.is_physical_key_pressed(KEY_A) and not esta_atacando:
+	if Input.is_physical_key_pressed(KEY_LEFT) and not esta_atacando:
 		$AnimatedSprite2D.flip_h = true
 		direccion_X -= 1
-	if Input.is_physical_key_pressed(KEY_D) and not esta_atacando:
+	if Input.is_physical_key_pressed(KEY_RIGHTd) and not esta_atacando:
 		$AnimatedSprite2D.flip_h = false
 		direccion_X += 1
 	

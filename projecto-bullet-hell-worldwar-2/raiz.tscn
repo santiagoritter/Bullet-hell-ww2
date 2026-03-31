@@ -14,17 +14,28 @@
 [ext_resource type="Texture2D" uid="uid://rhu7yho1d48m" path="res://outline_1/sm_ataque2_1.png" id="4_l63k4"]
 [ext_resource type="Texture2D" uid="uid://doxmg0ttf1c4l" path="res://outline_1/sm_quieto_3.png" id="4_tec4y"]
 [ext_resource type="Texture2D" uid="uid://b67yicydocj3b" path="res://outline_1/sm_ataque4a_6.png" id="4_yxn2m"]
+[ext_resource type="Texture2D" uid="uid://d3s72dl261q3b" path="res://enemigo_outline_1/enemigo_correr_arma_3.png" id="5_bk5yn"]
 [ext_resource type="Texture2D" uid="uid://b2u56g5ma3adi" path="res://outline_1/sm_ataque4a_3.png" id="5_uulsk"]
 [ext_resource type="Texture2D" uid="uid://cq6u1he4fjisr" path="res://outline_1/sm_correr_4.png" id="5_ycv7o"]
+[ext_resource type="Texture2D" uid="uid://bfiqyw16vr1t1" path="res://enemigo_outline_1/enemigo_correr_arma_4.png" id="6_7lawm"]
 [ext_resource type="Texture2D" uid="uid://cb8wtgiemcsr4" path="res://outline_1/sm_ataque4a_5.png" id="6_ll766"]
 [ext_resource type="Texture2D" uid="uid://d4lni3rbdycgt" path="res://outline_1/sm_correr_5.png" id="6_nf4va"]
 [ext_resource type="Texture2D" uid="uid://85vn753x1wwn" path="res://outline_1/sm_ataque4a_4.png" id="7_3g6jh"]
+[ext_resource type="Texture2D" uid="uid://dr17p2ybgoonv" path="res://enemigo_outline_1/enemigo_correr_arma_5.png" id="7_hh8kr"]
 [ext_resource type="Texture2D" uid="uid://cfs58hfvmq5hu" path="res://outline_2/sm_ataque4b_1.png" id="8_3g6jh"]
 [ext_resource type="Texture2D" uid="uid://dxebplx75tyub" path="res://outline_2/sm_ataque4b_2.png" id="9_u0qx7"]
 [ext_resource type="Texture2D" uid="uid://bckifc7dslnur" path="res://outline_2/sm_ataque4b_4.png" id="10_iddm5"]
+[ext_resource type="Script" uid="uid://cag3mbp4xb8s6" path="res://Enemigo.gd" id="23_rkiva"]
+[ext_resource type="Texture2D" uid="uid://vtuuiiwvbdl7" path="res://enemigo_outline_1/enemigo_correr_arma_1.png" id="24_i3s6h"]
+[ext_resource type="Texture2D" uid="uid://dbu3u4wg1nd0r" path="res://enemigo_outline_1/enemigo_correr_arma_2.png" id="25_2vx77"]
+[ext_resource type="Texture2D" uid="uid://c7feqm3npkqje" path="res://enemigo_outline_1/enemigo_quieto_1.png" id="29_n7wue"]
+[ext_resource type="Texture2D" uid="uid://bg3mac7e7bgit" path="res://enemigo_outline_1/enemigo_disparo_2.png" id="30_1uk4a"]
+[ext_resource type="Texture2D" uid="uid://bamr87f8c1oce" path="res://enemigo_outline_1/enemigo_quieto_2.png" id="30_f7j11"]
+[ext_resource type="Texture2D" uid="uid://6wv868vv3pl2" path="res://enemigo_outline_1/enemigo_quieto_3.png" id="31_1uk4a"]
+[ext_resource type="Texture2D" uid="uid://dyhn448gpptv7" path="res://enemigo_outline_1/enemigo_disparo_3.png" id="31_g8ty2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g76pc"]
-size = Vector2(74, 60)
+size = Vector2(34, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l63k4"]
 animations = [{
@@ -112,10 +123,68 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3g6jh"]
-size = Vector2(4444, 57)
+[sub_resource type="SpriteFrames" id="SpriteFrames_3g6jh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_i3s6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_2vx77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bk5yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7lawm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hh8kr")
+}],
+"loop": false,
+"name": &"Caminar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.6,
+"texture": ExtResource("30_1uk4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_1uk4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_g8ty2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_1uk4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_1uk4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_1uk4a")
+}],
+"loop": true,
+"name": &"Disparar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_n7wue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_f7j11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1uk4a")
+}],
+"loop": true,
+"name": &"Quieto",
+"speed": 5.0
+}]
 
 [node name="Raiz" type="Node2D" unique_id=492287694]
+position = Vector2(7, 142)
 
 [node name="fondo" type="Node2D" parent="." unique_id=1646217643]
 texture_repeat = 3
@@ -123,37 +192,48 @@ texture_repeat = 3
 [node name="Sprite2D" type="Sprite2D" parent="fondo" unique_id=137842811]
 texture_filter = 2
 texture_repeat = 3
-position = Vector2(563, 183.00002)
+position = Vector2(575, 195)
 scale = Vector2(0.9683783, 1.5530847)
 texture = ExtResource("1_3g6jh")
 
 [node name="Jugador" type="Node2D" parent="." unique_id=2140989261]
-position = Vector2(518, 198)
+position = Vector2(522, 198)
 
 [node name="Jugador_personaje" type="CharacterBody2D" parent="Jugador" unique_id=31355151]
 position = Vector2(44, -1)
 script = ExtResource("1_t8lke")
 
 [node name="HitBox" type="CollisionShape2D" parent="Jugador/Jugador_personaje" unique_id=424645358]
-position = Vector2(2, -1)
+position = Vector2(-46, 0)
 shape = SubResource("RectangleShape2D_g76pc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jugador/Jugador_personaje" unique_id=1115771986]
-position = Vector2(2, -12)
+position = Vector2(-51, -1)
 scale = Vector2(2.3461537, 2.5738637)
 sprite_frames = SubResource("SpriteFrames_l63k4")
-animation = &"Ataque_especial1"
+animation = &"Quieto"
 
 [node name="Camera2D" type="Camera2D" parent="Jugador/Jugador_personaje" unique_id=1973427237]
+position = Vector2(-48, 2)
+limit_left = -1500
+limit_top = -320
+limit_right = 2650
+limit_bottom = 890
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Bordes" type="Node2D" parent="." unique_id=69481191]
+[node name="Enemigo" type="Node2D" parent="." unique_id=1629569807]
 
-[node name="Pared_LEFT" type="CollisionShape2D" parent="Bordes" unique_id=151370905]
-position = Vector2(583, 760)
-shape = SubResource("RectangleShape2D_3g6jh")
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Enemigo" unique_id=275951692]
+position = Vector2(311, 178)
+script = ExtResource("23_rkiva")
 
-[node name="Pared_LEFT2" type="CollisionShape2D" parent="Bordes" unique_id=10305572]
-position = Vector2(611, -396)
-shape = SubResource("RectangleShape2D_3g6jh")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemigo/CharacterBody2D" unique_id=624400969]
+position = Vector2(-56, 74)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_3g6jh")
+animation = &"Disparar"
+
+[node name="HitBox" type="CollisionShape2D" parent="Enemigo/CharacterBody2D" unique_id=478911227]
+position = Vector2(-97, 82)
+shape = SubResource("RectangleShape2D_g76pc")
