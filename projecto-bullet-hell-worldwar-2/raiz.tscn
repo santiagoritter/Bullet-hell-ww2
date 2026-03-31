@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://btuacl25l186j"]
 
 [ext_resource type="Script" uid="uid://pqq4sml6qkic" path="res://character_body_2d.gd" id="1_t8lke"]
+[ext_resource type="Texture2D" uid="uid://dpr82w7u5l7wi" path="res://outline_1/sm_correr_1.png" id="2_5aouv"]
 [ext_resource type="Texture2D" uid="uid://ci2vyh764sb08" path="res://outline_1/sm_quieto_1.png" id="2_apd2t"]
+[ext_resource type="Texture2D" uid="uid://hpj5uqrxhjui" path="res://outline_1/sm_ataque3_6.png" id="2_l63k4"]
 [ext_resource type="Texture2D" uid="uid://q1hca748rxww" path="res://outline_1/sm_ataque1_3.png" id="2_tec4y"]
 [ext_resource type="Texture2D" uid="uid://bw33qofbefwx8" path="res://outline_1/sm_ataque2_2.png" id="3_cddf7"]
+[ext_resource type="Texture2D" uid="uid://tgtieet8erb6" path="res://outline_1/sm_correr_2.png" id="3_i046k"]
 [ext_resource type="Texture2D" uid="uid://c4uaoemu2mvni" path="res://outline_1/sm_quieto_2.png" id="3_rq8n4"]
+[ext_resource type="Texture2D" uid="uid://cmvd0a50yjtfc" path="res://outline_1/sm_correr_3.png" id="4_b5a8h"]
+[ext_resource type="Texture2D" uid="uid://vhw84v0qd6w0" path="res://outline_1/sm_ataque3_3.png" id="4_bk5yn"]
 [ext_resource type="Texture2D" uid="uid://rhu7yho1d48m" path="res://outline_1/sm_ataque2_1.png" id="4_l63k4"]
 [ext_resource type="Texture2D" uid="uid://doxmg0ttf1c4l" path="res://outline_1/sm_quieto_3.png" id="4_tec4y"]
+[ext_resource type="Texture2D" uid="uid://cq6u1he4fjisr" path="res://outline_1/sm_correr_4.png" id="5_ycv7o"]
+[ext_resource type="Texture2D" uid="uid://d4lni3rbdycgt" path="res://outline_1/sm_correr_5.png" id="6_nf4va"]
+[ext_resource type="Texture2D" uid="uid://50bo8nfy458m" path="res://FondoGuerra.png" id="15_i046k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g76pc"]
 size = Vector2(185, 169.5)
@@ -15,17 +23,43 @@ size = Vector2(185, 169.5)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_tec4y")
+"texture": ExtResource("2_5aouv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i046k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b5a8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ycv7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nf4va")
+}],
+"loop": true,
+"name": &"Caminar",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l63k4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l63k4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bk5yn")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_cddf7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_l63k4")
+"texture": ExtResource("2_tec4y")
 }],
 "loop": false,
 "name": &"Espada",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -59,4 +93,11 @@ shape = SubResource("RectangleShape2D_g76pc")
 position = Vector2(-101, 45)
 scale = Vector2(4.576923, 4.5227275)
 sprite_frames = SubResource("SpriteFrames_l63k4")
-animation = &"Espada"
+animation = &"Caminar"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1646217643]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=137842811]
+position = Vector2(579, 303)
+scale = Vector2(1.0955256, 1.0963541)
+texture = ExtResource("15_i046k")

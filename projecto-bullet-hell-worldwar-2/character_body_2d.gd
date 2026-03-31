@@ -1,11 +1,7 @@
 extends CharacterBody2D
 
 var velocidad = 400.0
-
-func _Atacar():
-	if Input.is_physical_key_pressed(KEY_SPACE):
-		$AnimatedSprite2D.play("Espada")
-
+var esta_atacando = false
 
 func _physics_process(delta):
 	var direccion_Y = 0
@@ -16,14 +12,23 @@ func _physics_process(delta):
 	if Input.is_physical_key_pressed(KEY_S):
 		direccion_Y += 1
 	if Input.is_physical_key_pressed(KEY_A):
+		$AnimatedSprite2D.flip_h = true
 		direccion_X -= 1
 	if Input.is_physical_key_pressed(KEY_D):
+		$AnimatedSprite2D.flip_h = false
 		direccion_X += 1
-	if Input.is_physical_key_pressed(KEY_SPACE):
-		$AnimatedSprite2D.play("Espada")
 	
-	if direccion_X == 0:
-		$AnimatedSprite2D.play("Quieto")
+	if Input.is_physical_key_pressed(KEY_SPACE) and not esta_atacando:
+		esta_atacando = true
+		$AnimatedSprite2D.play("Espada")
+		await $AnimatedSprite2D.animation_finished
+		esta_atacando = false
+		
+	if not esta_atacando:
+		if direccion_Y == 0 and direccion_X == 0:
+			$AnimatedSprite2D.play("Quieto")
+		else:
+			$AnimatedSprite2D.play("Caminar")
 		
 	velocity.y = direccion_Y * velocidad
 	velocity.x = direccion_X * velocidad
