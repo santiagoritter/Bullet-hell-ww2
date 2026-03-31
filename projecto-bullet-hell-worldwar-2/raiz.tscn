@@ -112,6 +112,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3g6jh"]
+size = Vector2(4444, 57)
+
 [node name="Raiz" type="Node2D" unique_id=492287694]
 
 [node name="fondo" type="Node2D" parent="." unique_id=1646217643]
@@ -147,13 +150,10 @@ drag_vertical_enabled = true
 
 [node name="Bordes" type="Node2D" parent="." unique_id=69481191]
 
-[node name="Pared_UP" type="CollisionShape2D" parent="Bordes" unique_id=1138502433]
-scale = Vector2(-1046.1465, 885529.2)
-
-[node name="Pared_DOWN" type="CollisionShape2D" parent="Bordes" unique_id=1035446412]
-
 [node name="Pared_LEFT" type="CollisionShape2D" parent="Bordes" unique_id=151370905]
+position = Vector2(583, 760)
+shape = SubResource("RectangleShape2D_3g6jh")
 
-[node name="Pared_RIGHT" type="CollisionShape2D" parent="Bordes" unique_id=887721174]
-position = Vector2(3.2851257, 3.765442)
-scale = Vector2(2774673.2, 157726.73)
+[node name="Pared_LEFT2" type="CollisionShape2D" parent="Bordes" unique_id=10305572]
+position = Vector2(611, -396)
+shape = SubResource("RectangleShape2D_3g6jh")
