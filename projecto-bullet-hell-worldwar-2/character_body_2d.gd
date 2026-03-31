@@ -9,6 +9,7 @@ func _physics_process(delta):
 	
 	if Input.is_physical_key_pressed(KEY_W):
 		direccion_Y -= 1
+		
 	if Input.is_physical_key_pressed(KEY_S):
 		direccion_Y += 1
 	if Input.is_physical_key_pressed(KEY_A):
@@ -23,12 +24,21 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("Espada")
 		await $AnimatedSprite2D.animation_finished
 		esta_atacando = false
+		velocidad = 300
+		
+	if Input.is_physical_key_pressed(KEY_E) and not esta_atacando:
+		esta_atacando = true
+		velocidad = 200
+		$AnimatedSprite2D.play("Ataque_especial1")
+		await $AnimatedSprite2D.animation_finished
+		esta_atacando = false
 		
 	if not esta_atacando:
 		if direccion_Y == 0 and direccion_X == 0:
 			$AnimatedSprite2D.play("Quieto")
 		else:
 			$AnimatedSprite2D.play("Caminar")
+			velocidad = 400
 		
 	velocity.y = direccion_Y * velocidad
 	velocity.x = direccion_X * velocidad
