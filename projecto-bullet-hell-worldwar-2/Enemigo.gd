@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var velocidad = 250.0
 var distancia_minima = 500.0 
+var esta_muerto = false
 
 var limite_izquierdo = -1500
 var limite_derecho = 2650
@@ -14,7 +15,19 @@ func _ready():
 	jugador = get_node("../../Jugador/Jugador_personaje")
 
 func _physics_process(delta):
+	if esta_muerto:
+		return
+
 	if jugador != null:
+		var distancia_total = global_position.distance_to(jugador.global_position)
+		var anim_jugador = jugador.get_node("AnimatedSprite2D").animation
+		
+		if distancia_total < 80 and (anim_jugador == "Espada" or anim_jugador == "Ataque_especial1"):
+			esta_muerto = true
+			velocity = Vector2.ZERO
+			$AnimatedSprite2D.play("MUERTO")
+			return
+
 		var distancia_x = abs(jugador.global_position.x - global_position.x)
 		var direccion_x = (jugador.global_position.x - global_position.x)
 		
