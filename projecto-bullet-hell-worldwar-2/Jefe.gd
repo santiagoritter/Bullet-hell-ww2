@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
+var vida = 500
 var velocidad = 150.0
 var distancia_deseada = 400.0
 
-var limite_izquierdo = -1500
-var limite_derecho = 2650
-var limite_arriba = -320
-var limite_abajo = 890
+var limite_izq = -1500
+var limite_der = 2650
+var limite_arr = -320
+var limite_abj = 890
 
 var timer_ataque = 0.0
 var esta_atacando = false
@@ -23,9 +24,12 @@ func _physics_process(delta):
 	var distancia = global_position.distance_to(jugador.global_position)
 	var direccion = (jugador.global_position - global_position).normalized()
 
-	$AnimatedSprite2D.flip_h = direccion.x < 0
+	if direccion.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
 
-	if not esta_atacando:
+	if esta_atacando == false:
 		if distancia > distancia_deseada + 50:
 			velocity = direccion * velocidad
 			$AnimatedSprite2D.play("Caminar")
@@ -38,55 +42,54 @@ func _physics_process(delta):
 		
 		move_and_slide()
 
-	timer_ataque += delta
-	if timer_ataque > 2.5 and not esta_atacando:
-		esta_atacando = true
-		lanzar_ataque()
-		timer_ataque = 0.0
+		timer_ataque += delta
+		if timer_ataque > 2.5:
+			timer_ataque = 0.0
+			lanzar_ataque()
 
-	global_position.x = clamp(global_position.x, limite_izquierdo, limite_derecho)
-	global_position.y = clamp(global_position.y, limite_arriba, limite_abajo)
+	global_position.x = clamp(global_position.x, limite_izq, limite_der)
+	global_position.y = clamp(global_position.y, limite_arr, limite_abj)
 
 func lanzar_ataque():
+	esta_atacando = true
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play("Disparar")
 	
-	var tipo_ataque = randi() % 3
+	var tipo = randi() % 2
 	
-	if tipo_ataque == 0:
-		ataque_circulo()
-	elif tipo_ataque == 1:
+	if tipo == 0:
 		await ataque_rafaga()
 	else:
 		ataque_abanico()
+		await get_tree().create_timer(0.8).timeout 
 	
-	await $AnimatedSprite2D.animation_finished
 	esta_atacando = false
-
-func ataque_circulo():
-	var num_balas = 16
-	for i in range(num_balas):
-		var angulo = i * (PI * 2 / num_balas)
-		crear_bala(angulo)
+	$AnimatedSprite2D.play("Quieto")
 
 func ataque_rafaga():
 	for i in range(6):
-		if jugador:
-			var angulo_jugador = (jugador.global_position - global_position).angle()
-			crear_bala(angulo_jugador)
+		if jugador != null:
+			var angulo = (jugador.global_position - global_position).angle()
+			crear_bala(angulo)
 		await get_tree().create_timer(0.15).timeout
 
 func ataque_abanico():
-	if jugador:
+	if jugador != null:
 		var angulo_base = (jugador.global_position - global_position).angle()
 		crear_bala(angulo_base)
 		crear_bala(angulo_base + 0.25)
 		crear_bala(angulo_base - 0.25)
 		crear_bala(angulo_base + 0.5)
 		crear_bala(angulo_base - 0.5)
-
+		
 func crear_bala(angulo):
 	var nueva_bala = bala_escena.instantiate()
 	get_parent().add_child(nueva_bala)
 	nueva_bala.global_position = global_position
 	nueva_bala.rotation = angulo
+
+func recibir_danio(cantidad):
+	vida = vida - cantidad
+	
+	if vida <= 0:
+		queue_free()

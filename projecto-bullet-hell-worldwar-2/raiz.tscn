@@ -37,7 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://dtcs1utbl7vmh" path="res://enemigo_outline_1/enemigo_correr_arma_8.png" id="31_7ubua"]
 [ext_resource type="Texture2D" uid="uid://dyhn448gpptv7" path="res://enemigo_outline_1/enemigo_disparo_3.png" id="31_g8ty2"]
 [ext_resource type="Texture2D" uid="uid://buggppnwer0ot" path="res://enemigo_outline_1/enemigo_golpeado_1.png" id="31_sukfs"]
-[ext_resource type="Texture2D" uid="uid://vttc8j5jove2" path="res://enemigo_outline_1/enemigo_disparo_1.png" id="32_6lm65"]
 [ext_resource type="Texture2D" uid="uid://xhkbo5fs8ltv" path="res://enemigo_outline_1/enemigo_golpeado2_1.png" id="32_8sen6"]
 [ext_resource type="Script" uid="uid://c5e87l2xafsty" path="res://Jefe.gd" id="37_g8ty2"]
 [ext_resource type="Texture2D" uid="uid://dtolydmb3me4h" path="res://enemigo_outline_1/enemigo_golpeado_2.png" id="37_kx8jm"]
@@ -45,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://b7tpeidf3ncmy" path="res://enemigo_outline_1/enemigo_golpeado_4.png" id="39_o4mqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g76pc"]
-size = Vector2(24, 41)
+size = Vector2(23.5, 42.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l63k4"]
 animations = [{
@@ -166,9 +165,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("32_6lm65")
-}, {
-"duration": 1.0,
 "texture": ExtResource("30_1uk4a")
 }, {
 "duration": 1.0,
@@ -180,7 +176,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("32_8sen6")
+"texture": ExtResource("39_o4mqx")
 }, {
 "duration": 1.0,
 "texture": ExtResource("31_sukfs")
@@ -192,9 +188,9 @@ animations = [{
 "texture": ExtResource("38_587ag")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_o4mqx")
+"texture": ExtResource("32_8sen6")
 }],
-"loop": true,
+"loop": false,
 "name": &"MUERTO",
 "speed": 5.0
 }]
@@ -400,7 +396,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x0vmf")
 }],
-"loop": false,
+"loop": true,
 "name": &"Caminar",
 "speed": 3.0
 }, {
@@ -515,52 +511,69 @@ position = Vector2(-46, 0)
 shape = SubResource("RectangleShape2D_g76pc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jugador/Jugador_personaje" unique_id=1115771986]
-position = Vector2(-51, -1)
+position = Vector2(-52, -1)
 scale = Vector2(2.3461537, 2.5738637)
 sprite_frames = SubResource("SpriteFrames_l63k4")
 animation = &"Quieto"
 
 [node name="Camera2D" type="Camera2D" parent="Jugador/Jugador_personaje" unique_id=1973427237]
 position = Vector2(-48, 2)
-limit_left = -1500
-limit_top = -320
-limit_right = 2650
-limit_bottom = 890
+limit_left = -1497
+limit_top = -319
+limit_right = 2653
+limit_bottom = 891
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Jugador/Jugador_personaje" unique_id=610872335]
+
+[node name="ProgressBar" type="ProgressBar" parent="Jugador/Jugador_personaje/CanvasLayer" unique_id=669403308]
+offset_left = 23.0
+offset_top = 587.0
+offset_right = 292.0
+offset_bottom = 614.0
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="TextEdit" type="TextEdit" parent="Jugador/Jugador_personaje/CanvasLayer" unique_id=2044050782]
+offset_left = 24.0
+offset_top = 545.0
+offset_right = 113.0
+offset_bottom = 583.0
+text = "Barra Vida"
 
 [node name="Enemigo" type="Node2D" parent="." unique_id=1629569807]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Enemigo" unique_id=275951692]
-position = Vector2(311, 178)
+position = Vector2(307, 179)
 script = ExtResource("23_rkiva")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemigo/CharacterBody2D" unique_id=624400969]
-position = Vector2(-38, 4.0000043)
+position = Vector2(-76, 15.000004)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_pne22")
-animation = &"Disparar"
+animation = &"MUERTO"
 autoplay = "Disparar"
 
 [node name="HitBox" type="CollisionShape2D" parent="Enemigo/CharacterBody2D" unique_id=478911227]
-position = Vector2(-39, 21)
+position = Vector2(-57, 18)
 shape = SubResource("RectangleShape2D_g76pc")
 
 [node name="Jefe" type="Node2D" parent="." unique_id=851064462]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Jefe" unique_id=113817049]
-position = Vector2(311, 178)
+position = Vector2(274, 320)
 script = ExtResource("37_g8ty2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jefe/CharacterBody2D" unique_id=381380953]
-position = Vector2(-107.00012, 149.99998)
-scale = Vector2(2.5, 2.5)
+position = Vector2(16, -39)
+scale = Vector2(1.9669117, 2.3749998)
 sprite_frames = SubResource("SpriteFrames_3g6jh")
-animation = &"Caminar"
-autoplay = "Disparar"
-frame = 13
-frame_progress = 1.0
+animation = &"Disparar"
+autoplay = "Quieto"
+frame_progress = 0.7735436
 
 [node name="HitBox" type="CollisionShape2D" parent="Jefe/CharacterBody2D" unique_id=1792461462]
-position = Vector2(-39, 21)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_g76pc")
