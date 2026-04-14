@@ -1,53 +1,61 @@
 extends CharacterBody2D
 
-var velocidad = 250.0
-var distancia_minima = 500.0 
+var velocidad = 200.0
+var dist_freno = 400.0
 var esta_muerto = false
-		
-var limite_izquierdo = -1500
-var limite_derecho = 2650
-var limite_arriba = -320
-var limite_abajo = 890
-		
+
+var lim_izq = -1500
+var lim_der = 2650
+var lim_arr = -320
+var lim_abj = 890
+
+var timer_tiro = 0.0
 var jugador = null
-		
+var bala_enemigo = preload("res://bala_enemigo.tscn")
+
 func _ready():
 	jugador = get_node("../../Jugador/Jugador_personaje")
-			
+
 func _physics_process(delta):
-	if esta_muerto:
+	if esta_muerto or jugador == null:
 		return
-			
-	if jugador != null:
-		var distancia_total = global_position.distance_to(jugador.global_position)
-		var anim_jugador = jugador.get_node("AnimatedSprite2D").animation
-							
-		if distancia_total < 80 and (anim_jugador == "Espada" or anim_jugador == "Ataque_especial1"):
+
+	var dist = global_position.distance_to(jugador.global_position)
+	var dir = (jugador.global_position - global_position).normalized()
+	
+	if dir.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
+
+	var anim_jugador = jugador.get_node("AnimatedSprite2D").animation
+	if dist < 120:
+		if anim_jugador == "Espada" or anim_jugador == "Ataque_especial1":
 			esta_muerto = true
 			velocity = Vector2.ZERO
 			$AnimatedSprite2D.play("MUERTO")
+			await $AnimatedSprite2D.animation_finished
+			queue_free()
 			return
-							
-		var distancia_x = abs(jugador.global_position.x - global_position.x)
-		var direccion_x = (jugador.global_position.x - global_position.x)
-		
-		$AnimatedSprite2D.flip_h = direccion_x < 0
 
-		if global_position.y < jugador.global_position.y - 10:
-			velocity.y = velocidad
-		elif global_position.y > jugador.global_position.y + 10:
-			velocity.y = -velocidad
-		else:
-			velocity.y = 0
-						
-		if distancia_x > distancia_minima:
-			velocity.x = (1 if direccion_x > 0 else -1) * velocidad
-			$AnimatedSprite2D.play("Caminar")
-		else:
-			velocity.x = 0
-			$AnimatedSprite2D.play("d")
-						
-		move_and_slide()
-				
-	global_position.x = clamp(global_position.x, limite_izquierdo, limite_derecho)
-	global_position.y = clamp(global_position.y, limite_arriba, limite_abajo)
+	if dist > dist_freno:
+		velocity = dir * velocidad
+		$AnimatedSprite2D.play("Caminar")
+	else:
+		velocity = Vector2.ZERO
+		$AnimatedSprite2D.play("Quieto")
+
+	move_and_slide()
+
+	timer_tiro += delta
+	if timer_tiro > 2.0:
+		disparar_recto()
+		timer_tiro = 0.0
+
+	global_position.x = clamp(global_position.x, lim_izq, lim_der)
+	global_position.y = clamp(global_position.y, lim_arr, lim_abj)
+
+func disparar_recto():
+	var nueva_b = bala_enemigo.instantiate()
+	nueva_b.global_position = global_position
+	get_parent().add_child(nueva_b)

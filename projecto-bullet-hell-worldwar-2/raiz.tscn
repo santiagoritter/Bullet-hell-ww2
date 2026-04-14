@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://dtolydmb3me4h" path="res://enemigo_outline_1/enemigo_golpeado_2.png" id="37_kx8jm"]
 [ext_resource type="Texture2D" uid="uid://cp126x60lkmdi" path="res://enemigo_outline_1/enemigo_golpeado_3.png" id="38_587ag"]
 [ext_resource type="Texture2D" uid="uid://b7tpeidf3ncmy" path="res://enemigo_outline_1/enemigo_golpeado_4.png" id="39_o4mqx"]
+[ext_resource type="PackedScene" uid="uid://bviifp34nwlfe" path="res://bala_enemigo.tscn" id="43_x0vmf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g76pc"]
 size = Vector2(23.5, 42.5)
@@ -543,31 +544,58 @@ offset_right = 113.0
 offset_bottom = 583.0
 text = "Barra Vida"
 
+[node name="LabelE" type="Label" parent="Jugador/Jugador_personaje/CanvasLayer" unique_id=1863139320]
+offset_left = 315.0
+offset_top = 588.0
+offset_right = 355.0
+offset_bottom = 611.0
+text = "Pene"
+
 [node name="Enemigo" type="Node2D" parent="." unique_id=1629569807]
+position = Vector2(102, 157)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Enemigo" unique_id=275951692]
-position = Vector2(307, 179)
+position = Vector2(159, 52)
 script = ExtResource("23_rkiva")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemigo/CharacterBody2D" unique_id=624400969]
-position = Vector2(-76, 15.000004)
+position = Vector2(15.999977, -5.0000153)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_pne22")
 animation = &"MUERTO"
 autoplay = "Disparar"
 
 [node name="HitBox" type="CollisionShape2D" parent="Enemigo/CharacterBody2D" unique_id=478911227]
-position = Vector2(-57, 18)
+position = Vector2(4, -9)
+shape = SubResource("RectangleShape2D_g76pc")
+
+[node name="Enemigo2" type="Node2D" parent="." unique_id=2026567414]
+position = Vector2(734, 164)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Enemigo2" unique_id=413559298]
+position = Vector2(767, 187)
+script = ExtResource("23_rkiva")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemigo2/CharacterBody2D" unique_id=642104069]
+position = Vector2(-755.00006, -197.00002)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_pne22")
+animation = &"MUERTO"
+autoplay = "Disparar"
+
+[node name="HitBox" type="CollisionShape2D" parent="Enemigo2/CharacterBody2D" unique_id=808674192]
+position = Vector2(-766, -182)
 shape = SubResource("RectangleShape2D_g76pc")
 
 [node name="Jefe" type="Node2D" parent="." unique_id=851064462]
+position = Vector2(114, 31)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Jefe" unique_id=113817049]
-position = Vector2(274, 320)
+position = Vector2(435, 377)
 script = ExtResource("37_g8ty2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jefe/CharacterBody2D" unique_id=381380953]
-position = Vector2(16, -39)
+position = Vector2(126, -24)
 scale = Vector2(1.9669117, 2.3749998)
 sprite_frames = SubResource("SpriteFrames_3g6jh")
 animation = &"Disparar"
@@ -575,5 +603,17 @@ autoplay = "Quieto"
 frame_progress = 0.7735436
 
 [node name="HitBox" type="CollisionShape2D" parent="Jefe/CharacterBody2D" unique_id=1792461462]
-position = Vector2(0, 1)
+position = Vector2(7, 1)
 shape = SubResource("RectangleShape2D_g76pc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Jefe/CharacterBody2D" unique_id=574077148]
+
+[node name="BarraVidaJefe" type="ProgressBar" parent="Jefe/CharacterBody2D/CanvasLayer" unique_id=1569620148]
+offset_left = 345.0
+offset_top = 33.0
+offset_right = 747.0
+offset_bottom = 60.0
+max_value = 20.0
+
+[node name="BalaEnemigo" parent="." unique_id=751385335 instance=ExtResource("43_x0vmf")]
+position = Vector2(376, -550)
