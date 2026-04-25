@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dc7sy54ge70i3"]
+
+[ext_resource type="Script" uid="uid://b3f3w0pvwhq3b" path="res://menu_ganastes.gd" id="1_u6g80"]
+
+[node name="MenuGanastes" type="Control" unique_id=776257785]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u6g80")
+
+[node name="Victoria" type="Label" parent="." unique_id=1063562718]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 95.0
+offset_right = 759.0
+offset_bottom = 124.0
+text = "Victoria!!!!"
+horizontal_alignment = 1
+
+[node name="1" type="Button" parent="." unique_id=82868687]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 294.0
+offset_right = 864.0
+offset_bottom = 394.0
+text = "Jugar otra vez"
+
+[node name="2" type="Button" parent="." unique_id=540331844]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 290.0
+offset_right = 516.0
+offset_bottom = 391.0
+text = "Menu principal"
+
+[connection signal="pressed" from="1" to="." method="_on__pressed"]
+[connection signal="pressed" from="2" to="." method="_on__pressed"]

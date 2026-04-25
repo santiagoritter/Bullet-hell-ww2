@@ -78,6 +78,4 @@ func recibir_danio(cantidad):
 	$CanvasLayer/ProgressBar.value = vida
 	
 	if vida <= 0:
-		get_tree().reload_current_scene()
-	else:
-		tiempo_invencible = 1.0
+		get_tree().change_scene_to_file("res://menu_perdistes.tscn")

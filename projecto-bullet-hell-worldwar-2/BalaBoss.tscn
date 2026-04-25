@@ -60,10 +60,10 @@ shape = SubResource("RectangleShape2D_y32ns")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1486845768]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1628216410]
-position = Vector2(-2, 3.9999847)
+position = Vector2(-2, -2.0000005)
 scale = Vector2(1.1184081, 0.9565429)
 sprite_frames = SubResource("SpriteFrames_km48j")
-animation = &"Crash"
+animation = &"Normal"
 autoplay = "Normal"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
