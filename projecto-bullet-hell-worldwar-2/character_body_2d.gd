@@ -5,6 +5,7 @@ var velocidad = 400.0
 var esta_atacando = false
 var escudo = false
 var tiempo_e = 0.0
+var tiempo_invencible = 0.0
 
 var limite_izquierdo = -1500
 var limite_derecho = 2650
@@ -17,26 +18,29 @@ func _ready():
 
 func _physics_process(delta):
 	if tiempo_e > 0:
-		tiempo_e -= delta
+		tiempo_e = tiempo_e - delta
 		$CanvasLayer/LabelE.text = str(int(tiempo_e) + 1)
 	else:
 		$CanvasLayer/LabelE.text = "Press (E)"
+
+	if tiempo_invencible > 0:
+		tiempo_invencible = tiempo_invencible - delta
 
 	var direccion_Y = 0
 	var direccion_X = 0
 	
 	if Input.is_physical_key_pressed(KEY_W):
-		direccion_Y -= 1
+		direccion_Y = direccion_Y - 1
 	if Input.is_physical_key_pressed(KEY_S):
-		direccion_Y += 1
+		direccion_Y = direccion_Y + 1
 	if Input.is_physical_key_pressed(KEY_A):
 		if esta_atacando == false:
 			$AnimatedSprite2D.flip_h = true
-		direccion_X -= 1
+		direccion_X = direccion_X - 1
 	if Input.is_physical_key_pressed(KEY_D):
 		if esta_atacando == false:
 			$AnimatedSprite2D.flip_h = false
-		direccion_X += 1
+		direccion_X = direccion_X + 1
 	
 	if Input.is_physical_key_pressed(KEY_SPACE) and esta_atacando == false:
 		esta_atacando = true
@@ -67,7 +71,7 @@ func _physics_process(delta):
 	global_position.y = clamp(global_position.y, limite_arriba, limite_abajo)
 
 func recibir_danio(cantidad):
-	if escudo == true:
+	if escudo == true or tiempo_invencible > 0:
 		return
 
 	vida = vida - cantidad
@@ -75,3 +79,5 @@ func recibir_danio(cantidad):
 	
 	if vida <= 0:
 		get_tree().reload_current_scene()
+	else:
+		tiempo_invencible = 1.0

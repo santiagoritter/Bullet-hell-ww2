@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c4i38wlykbpon"]
+
+[ext_resource type="Script" uid="uid://bdoatj7388h3t" path="res://menu_principal.gd" id="1_bj1uy"]
+
+[node name="MenuPrincipal" type="Control" unique_id=1612697024]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bj1uy")
+
+[node name="Button" type="Button" parent="." unique_id=110966095]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 235.0
+offset_right = 479.0
+offset_bottom = 468.0
+text = "Nivel 1"
+
+[node name="Button2" type="Button" parent="." unique_id=993886881]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 235.0
+offset_right = 873.0
+offset_bottom = 458.0
+text = "Nivel 2"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

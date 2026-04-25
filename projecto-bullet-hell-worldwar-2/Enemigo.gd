@@ -43,7 +43,10 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("Caminar")
 	else:
 		velocity = Vector2.ZERO
-		$AnimatedSprite2D.play("Quieto")
+		if timer_tiro < 1.5:
+			$AnimatedSprite2D.play("Quieto")
+		else:
+			$AnimatedSprite2D.play("Disparar")
 
 	move_and_slide()
 

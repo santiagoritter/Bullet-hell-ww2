@@ -1,16 +1,70 @@
 [gd_scene format=3 uid="uid://6ccbifhqfovf"]
 
+[ext_resource type="Script" uid="uid://2ufhjsk8fiw5" path="res://bala_boss.gd" id="1_03lgf"]
+[ext_resource type="Texture2D" uid="uid://q0v8byo0gerp" path="res://fireball_V_1_1/B500-2.PNG" id="1_8kbtr"]
+[ext_resource type="Texture2D" uid="uid://7p5o7yjs1j0j" path="res://fireball_V_1_1/B500-3.PNG" id="2_03lgf"]
+[ext_resource type="Texture2D" uid="uid://ypu326d5itba" path="res://fireball_V_1_1/B500-4.PNG" id="3_ckstj"]
+[ext_resource type="Texture2D" uid="uid://drqhw12fqfekb" path="res://fireball_V_1_1/FB500-1.png" id="4_m50bc"]
+[ext_resource type="Texture2D" uid="uid://ohhbepvmxwi4" path="res://fireball_V_1_1/FB500-2.png" id="5_x0pxi"]
+[ext_resource type="Texture2D" uid="uid://dgk35ryvk3spw" path="res://fireball_V_1_1/FB500-3.png" id="6_eh5vc"]
+[ext_resource type="Texture2D" uid="uid://dwtm7358oyicq" path="res://fireball_V_1_1/FB500-4.png" id="7_2h6ip"]
+[ext_resource type="Texture2D" uid="uid://c05bydcm0q3b8" path="res://fireball_V_1_1/FB500-5.png" id="8_moqnn"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y32ns"]
 size = Vector2(20, 33)
 
-[node name="BalaBoss" type="Area2D" unique_id=225594433]
+[sub_resource type="SpriteFrames" id="SpriteFrames_weiyx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8kbtr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_03lgf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ckstj")
+}],
+"loop": true,
+"name": &"Crash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m50bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x0pxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eh5vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2h6ip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_moqnn")
+}],
+"loop": true,
+"name": &"Normal",
+"speed": 8.0
+}]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=543070749]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="BalaBoss" type="Area2D" unique_id=225594433]
+visible = false
+script = ExtResource("1_03lgf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=868143838]
+visible = false
 position = Vector2(19, 19)
 shape = SubResource("RectangleShape2D_y32ns")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1486845768]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1459298718]
+visible = false
+position = Vector2(15, -5)
+sprite_frames = SubResource("SpriteFrames_weiyx")
+animation = &"Normal"
+autoplay = "Normal"

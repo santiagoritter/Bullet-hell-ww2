@@ -68,7 +68,6 @@ func hacer_combo():
 	$AnimatedSprite2D.play("Disparar")
 	
 	var random = randi() % 2
-	
 	if random == 0:
 		await ataque_rafaga()
 	else:
@@ -103,7 +102,6 @@ func crear_bala(angulo):
 func recibir_danio(puntos):
 	vida = vida - puntos
 	$CanvasLayer/BarraVidaJefe.value = vida
-	
 	if vida <= 0:
 		queue_free()
 		get_tree().reload_current_scene()
