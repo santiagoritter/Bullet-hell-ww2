@@ -316,11 +316,9 @@ autoplay = "Quieto"
 position = Vector2(7, 1)
 shape = SubResource("RectangleShape2D_g76pc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D" unique_id=387162476]
-
-[node name="BarraVidaJefe" type="ProgressBar" parent="CharacterBody2D/CanvasLayer" unique_id=42991868]
-offset_left = 345.0
-offset_top = 33.0
-offset_right = 747.0
-offset_bottom = 60.0
+[node name="BarraVidaJefe" type="ProgressBar" parent="CharacterBody2D" unique_id=42991868]
+offset_left = -73.0
+offset_top = -119.0
+offset_right = 98.0
+offset_bottom = -92.0
 max_value = 20.0

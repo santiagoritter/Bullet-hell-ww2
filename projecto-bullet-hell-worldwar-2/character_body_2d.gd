@@ -7,40 +7,54 @@ var escudo = false
 var tiempo_e = 0.0
 var tiempo_invencible = 0.0
 
-var limite_izquierdo = -1500
-var limite_derecho = 2650
-var limite_arriba = -320
-var limite_abajo = 890
+var codigo_konami = [KEY_UP, KEY_UP, KEY_DOWN, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_LEFT, KEY_RIGHT, KEY_B, KEY_A]
+var paso_codigo = 0
+var vida_infinita = false
+
+var lim_izq = -1500
+var lim_der = 2650
+var lim_arr = -320
+var lim_abj = 890
 
 func _ready():
-	$CanvasLayer/ProgressBar.max_value = vida
-	$CanvasLayer/ProgressBar.value = vida
+	if has_node("CanvasLayer/ProgressBar"):
+		$CanvasLayer/ProgressBar.max_value = vida
+		$CanvasLayer/ProgressBar.value = vida
+
+func _input(event):
+	if event is InputEventKey and event.pressed and event.echo == false:
+		if event.keycode == codigo_konami[paso_codigo]:
+			paso_codigo = paso_codigo + 1
+			if paso_codigo == 10:
+				vida_infinita = true
+				paso_codigo = 0
+		else:
+			paso_codigo = 0
+			if event.keycode == KEY_UP:
+				paso_codigo = 1
 
 func _physics_process(delta):
 	if tiempo_e > 0:
 		tiempo_e = tiempo_e - delta
-		$CanvasLayer/LabelE.text = str(int(tiempo_e) + 1)
-	else:
-		$CanvasLayer/LabelE.text = "Press (E)"
-
+	
 	if tiempo_invencible > 0:
 		tiempo_invencible = tiempo_invencible - delta
 
-	var direccion_Y = 0
-	var direccion_X = 0
+	var vy = 0
+	var vx = 0
 	
 	if Input.is_physical_key_pressed(KEY_W):
-		direccion_Y = direccion_Y - 1
+		vy = vy - 1
 	if Input.is_physical_key_pressed(KEY_S):
-		direccion_Y = direccion_Y + 1
+		vy = vy + 1
 	if Input.is_physical_key_pressed(KEY_A):
 		if esta_atacando == false:
 			$AnimatedSprite2D.flip_h = true
-		direccion_X = direccion_X - 1
+		vx = vx - 1
 	if Input.is_physical_key_pressed(KEY_D):
 		if esta_atacando == false:
 			$AnimatedSprite2D.flip_h = false
-		direccion_X = direccion_X + 1
+		vx = vx + 1
 	
 	if Input.is_physical_key_pressed(KEY_SPACE) and esta_atacando == false:
 		esta_atacando = true
@@ -58,24 +72,27 @@ func _physics_process(delta):
 		esta_atacando = false
 		
 	if esta_atacando == false:
-		if direccion_Y == 0 and direccion_X == 0:
+		if vy == 0 and vx == 0:
 			$AnimatedSprite2D.play("Quieto")
 		else:
 			$AnimatedSprite2D.play("Caminar")
 		
-	velocity.y = direccion_Y * velocidad
-	velocity.x = direccion_X * velocidad
+	velocity.y = vy * velocidad
+	velocity.x = vx * velocidad
 	move_and_slide()
 
-	global_position.x = clamp(global_position.x, limite_izquierdo, limite_derecho)
-	global_position.y = clamp(global_position.y, limite_arriba, limite_abajo)
+	global_position.x = clamp(global_position.x, lim_izq, lim_der)
+	global_position.y = clamp(global_position.y, lim_arr, lim_abj)
 
 func recibir_danio(cantidad):
-	if escudo == true or tiempo_invencible > 0:
+	if escudo == true or tiempo_invencible > 0 or vida_infinita == true:
 		return
 
 	vida = vida - cantidad
-	$CanvasLayer/ProgressBar.value = vida
+	if has_node("CanvasLayer/ProgressBar"):
+		$CanvasLayer/ProgressBar.value = vida
 	
 	if vida <= 0:
 		get_tree().change_scene_to_file("res://menu_perdistes.tscn")
+	else:
+		tiempo_invencible = 1.0

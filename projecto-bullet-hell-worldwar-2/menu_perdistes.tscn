@@ -13,28 +13,28 @@ script = ExtResource("1_n65ms")
 
 [node name="Perdiste" type="Label" parent="." unique_id=1094777984]
 layout_mode = 0
-offset_left = 500.0
+offset_left = 463.0
 offset_top = 95.0
-offset_right = 759.0
+offset_right = 722.0
 offset_bottom = 124.0
 text = "Te mataron"
 horizontal_alignment = 1
 
 [node name="1" type="Button" parent="." unique_id=1485043784]
 layout_mode = 0
-offset_left = 335.0
+offset_left = 298.0
 offset_top = 276.0
-offset_right = 530.0
+offset_right = 493.0
 offset_bottom = 376.0
 text = "Jugar otra vez"
 
 [node name="2" type="Button" parent="." unique_id=433860844]
 layout_mode = 0
-offset_left = 722.0
-offset_top = 274.0
-offset_right = 906.0
-offset_bottom = 375.0
+offset_left = 691.0
+offset_top = 277.0
+offset_right = 875.0
+offset_bottom = 378.0
 text = "Menu principal"
 
-[connection signal="pressed" from="1" to="." method="_on__pressed"]
-[connection signal="pressed" from="2" to="." method="_on__pressed"]
+[connection signal="pressed" from="1" to="." method="_on_1_pressed"]
+[connection signal="pressed" from="2" to="." method="_on_2_pressed"]
