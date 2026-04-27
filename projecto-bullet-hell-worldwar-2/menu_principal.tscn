@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdoatj7388h3t" path="res://menu_principal.gd" id="1_bj1uy"]
 [ext_resource type="Texture2D" uid="uid://r6a8403kbq20" path="res://imagenFondosa.jpg" id="2_gmcsc"]
+[ext_resource type="FontFile" uid="uid://bji7bdtkubbvk" path="res://Canterbury.ttf" id="3_ul6ys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmcsc"]
 content_margin_left = 4.0
@@ -15,6 +16,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 shadow_color = Color(0.91764706, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ul6ys"]
+bg_color = Color(0.7889598, 0.45218882, 0.2625132, 1)
 
 [node name="MenuPrincipal" type="Control" unique_id=1612697024]
 layout_mode = 3
@@ -36,7 +40,10 @@ offset_left = 147.0
 offset_top = 43.0
 offset_right = 353.0
 offset_bottom = 276.0
+theme_override_fonts/font = ExtResource("3_ul6ys")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_gmcsc")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ul6ys")
 text = "Nivel 1"
 
 [node name="Button2" type="Button" parent="." unique_id=993886881]
@@ -45,19 +52,35 @@ offset_left = 147.0
 offset_top = 308.0
 offset_right = 351.0
 offset_bottom = 531.0
+theme_override_fonts/font = ExtResource("3_ul6ys")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ul6ys")
 text = "Nivel 2"
 
 [node name="Label" type="Label" parent="." unique_id=313939458]
 layout_mode = 0
-offset_left = 417.0
-offset_top = 134.0
-offset_right = 704.0
-offset_bottom = 275.0
+offset_left = 377.0
+offset_top = 155.0
+offset_right = 767.0
+offset_bottom = 367.0
 theme_override_colors/font_color = Color(0, 0.03137255, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("3_ul6ys")
+theme_override_font_sizes/font_size = 70
 text = "San Martin 
     the Game"
+
+[node name="Label2" type="Label" parent="." unique_id=1160340611]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 586.0
+offset_right = 585.0
+offset_bottom = 627.0
+theme_override_colors/font_color = Color(0, 0.03137255, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ul6ys")
+theme_override_font_sizes/font_size = 35
+text = "Movment: W A S D"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

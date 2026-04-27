@@ -2,14 +2,22 @@
 
 [ext_resource type="Script" uid="uid://b3f3w0pvwhq3b" path="res://menu_ganastes.gd" id="1_u6g80"]
 [ext_resource type="Texture2D" uid="uid://bf6joo8q7ei73" path="res://sanmaWin.jpg" id="2_iso0i"]
+[ext_resource type="FontFile" uid="uid://bji7bdtkubbvk" path="res://Canterbury.ttf" id="3_2cvsc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iso0i"]
-bg_color = Color(0.61488795, 0.42197955, 0, 1)
+bg_color = Color(0.6156863, 0.42352942, 0.25490198, 0.7529412)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cvsc"]
+bg_color = Color(0.34901962, 0.21960784, 0, 0.6431373)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="MenuGanastes" type="Control" unique_id=776257785]
 layout_mode = 3
@@ -32,6 +40,7 @@ offset_top = 39.0
 offset_right = 406.0
 offset_bottom = 132.0
 theme_override_colors/font_color = Color(0.9999998, 0.9395869, 0.9666223, 1)
+theme_override_fonts/font = ExtResource("3_2cvsc")
 theme_override_font_sizes/font_size = 68
 text = "Victoria!!!!"
 horizontal_alignment = 1
@@ -42,8 +51,10 @@ offset_left = 288.0
 offset_top = 393.0
 offset_right = 575.0
 offset_bottom = 583.0
+theme_override_fonts/font = ExtResource("3_2cvsc")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_iso0i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2cvsc")
 text = "Jugar Nivel 2"
 
 [node name="2" type="Button" parent="." unique_id=540331844]
@@ -52,8 +63,10 @@ offset_left = 647.0
 offset_top = 395.0
 offset_right = 940.0
 offset_bottom = 584.0
+theme_override_fonts/font = ExtResource("3_2cvsc")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_iso0i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2cvsc")
 text = "Menu principal"
 
 [connection signal="pressed" from="1" to="." method="_on_1_pressed"]
