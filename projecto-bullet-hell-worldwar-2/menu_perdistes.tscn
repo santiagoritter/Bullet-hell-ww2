@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://bjqpnyviso07x" path="res://menu_perdistes.gd" id="1_n65ms"]
 [ext_resource type="Texture2D" uid="uid://bx0rlrge7lp4p" path="res://sanmartin-fallecimiento.jpg" id="2_xrt8y"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrt8y"]
+bg_color = Color(0.39437538, 0, 0, 0.59607846)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pw3w7"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="MenuPerdistes" type="Control" unique_id=623622797]
 layout_mode = 3
 anchors_preset = 15
@@ -18,10 +24,11 @@ texture = ExtResource("2_xrt8y")
 
 [node name="Perdiste" type="Label" parent="." unique_id=1094777984]
 layout_mode = 0
-offset_left = 463.0
-offset_top = 95.0
-offset_right = 722.0
-offset_bottom = 124.0
+offset_left = 480.0
+offset_top = 88.0
+offset_right = 739.0
+offset_bottom = 151.0
+theme_override_font_sizes/font_size = 45
 text = "Te mataron"
 horizontal_alignment = 1
 
@@ -31,6 +38,9 @@ offset_left = 298.0
 offset_top = 276.0
 offset_right = 493.0
 offset_bottom = 376.0
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_xrt8y")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pw3w7")
 text = "Jugar otra vez"
 
 [node name="2" type="Button" parent="." unique_id=433860844]
@@ -39,6 +49,9 @@ offset_left = 691.0
 offset_top = 277.0
 offset_right = 875.0
 offset_bottom = 378.0
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_xrt8y")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pw3w7")
 text = "Menu principal"
 
 [connection signal="pressed" from="1" to="." method="_on_1_pressed"]
