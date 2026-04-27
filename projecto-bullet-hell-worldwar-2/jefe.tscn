@@ -299,6 +299,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g76pc"]
 size = Vector2(23.5, 42.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7f01e"]
+bg_color = Color(0.57873577, 0, 0.039176278, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhcje"]
+bg_color = Color(1, 0.015686275, 0.047058824, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="Jefe" type="Node2D" unique_id=812094762]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=415326839]
@@ -321,4 +336,6 @@ offset_left = -73.0
 offset_top = -119.0
 offset_right = 98.0
 offset_bottom = -92.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7f01e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rhcje")
 max_value = 20.0

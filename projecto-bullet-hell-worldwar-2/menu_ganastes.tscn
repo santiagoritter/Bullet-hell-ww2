@@ -3,6 +3,14 @@
 [ext_resource type="Script" uid="uid://b3f3w0pvwhq3b" path="res://menu_ganastes.gd" id="1_u6g80"]
 [ext_resource type="Texture2D" uid="uid://bf6joo8q7ei73" path="res://sanmaWin.jpg" id="2_iso0i"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iso0i"]
+bg_color = Color(0.61488795, 0.42197955, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
 [node name="MenuGanastes" type="Control" unique_id=776257785]
 layout_mode = 3
 anchors_preset = 15
@@ -19,29 +27,33 @@ texture = ExtResource("2_iso0i")
 
 [node name="Victoria" type="Label" parent="." unique_id=1063562718]
 layout_mode = 0
-offset_left = 470.0
-offset_top = 68.0
-offset_right = 710.0
-offset_bottom = 125.0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 40
+offset_left = 80.0
+offset_top = 39.0
+offset_right = 406.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0.9999998, 0.9395869, 0.9666223, 1)
+theme_override_font_sizes/font_size = 68
 text = "Victoria!!!!"
 horizontal_alignment = 1
 
 [node name="1" type="Button" parent="." unique_id=82868687]
 layout_mode = 0
-offset_left = 676.0
-offset_top = 491.0
-offset_right = 871.0
-offset_bottom = 591.0
+offset_left = 288.0
+offset_top = 393.0
+offset_right = 575.0
+offset_bottom = 583.0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_iso0i")
 text = "Jugar Nivel 2"
 
 [node name="2" type="Button" parent="." unique_id=540331844]
 layout_mode = 0
-offset_left = 331.0
-offset_top = 498.0
-offset_right = 515.0
-offset_bottom = 599.0
+offset_left = 647.0
+offset_top = 395.0
+offset_right = 940.0
+offset_bottom = 584.0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_iso0i")
 text = "Menu principal"
 
 [connection signal="pressed" from="1" to="." method="_on_1_pressed"]

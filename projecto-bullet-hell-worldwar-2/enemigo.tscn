@@ -84,12 +84,15 @@ animations = [{
 size = Vector2(23.5, 42.5)
 
 [node name="Enemigo" type="Node2D" unique_id=45050113]
+visible = false
 position = Vector2(231, 105)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=531589336]
+visible = false
 script = ExtResource("1_l0i0t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=617222440]
+visible = false
 position = Vector2(15.999977, -5.0000153)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_pne22")
@@ -97,5 +100,6 @@ animation = &"MUERTO"
 autoplay = "Disparar"
 
 [node name="HitBox" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1358824676]
+visible = false
 position = Vector2(4, -9)
 shape = SubResource("RectangleShape2D_g76pc")

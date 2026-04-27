@@ -4,10 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://bx0rlrge7lp4p" path="res://sanmartin-fallecimiento.jpg" id="2_xrt8y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrt8y"]
-bg_color = Color(0.39437538, 0, 0, 0.59607846)
+bg_color = Color(0.6657944, 0.0062872577, 0, 0.627451)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pw3w7"]
-bg_color = Color(1, 0, 0, 1)
+bg_color = Color(1, 0, 0.007843138, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un0bn"]
+bg_color = Color(0.62908286, 0, 0, 1)
+draw_center = false
 
 [node name="MenuPerdistes" type="Control" unique_id=623622797]
 layout_mode = 3
@@ -24,34 +32,37 @@ texture = ExtResource("2_xrt8y")
 
 [node name="Perdiste" type="Label" parent="." unique_id=1094777984]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 88.0
-offset_right = 739.0
-offset_bottom = 151.0
+offset_left = -3.0
+offset_top = 79.0
+offset_right = 1154.0
+offset_bottom = 142.0
 theme_override_font_sizes/font_size = 45
 text = "Te mataron"
 horizontal_alignment = 1
 
 [node name="1" type="Button" parent="." unique_id=1485043784]
 layout_mode = 0
-offset_left = 298.0
-offset_top = 276.0
-offset_right = 493.0
-offset_bottom = 376.0
+offset_left = 283.0
+offset_top = 261.0
+offset_right = 478.0
+offset_bottom = 361.0
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_xrt8y")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pw3w7")
-text = "Jugar otra vez"
+theme_override_styles/hover = SubResource("StyleBoxFlat_un0bn")
+text = "Jugar otra vez
+ el nivel 1"
 
 [node name="2" type="Button" parent="." unique_id=433860844]
 layout_mode = 0
-offset_left = 691.0
-offset_top = 277.0
-offset_right = 875.0
-offset_bottom = 378.0
+offset_left = 676.0
+offset_top = 262.0
+offset_right = 860.0
+offset_bottom = 363.0
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_xrt8y")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pw3w7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_un0bn")
 text = "Menu principal"
 
 [connection signal="pressed" from="1" to="." method="_on_1_pressed"]

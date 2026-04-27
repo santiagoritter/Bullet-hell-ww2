@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://btuacl25l186j"]
 
-[ext_resource type="Texture2D" uid="uid://ers6frilrhup" path="res://Fondo2.png" id="1_3g6jh"]
+[ext_resource type="Texture2D" uid="uid://cliunjhsb201v" path="res://grass.jpg" id="1_rq8n4"]
 [ext_resource type="PackedScene" uid="uid://crg67lyino6i0" path="res://jugador.tscn" id="2_rq8n4"]
-[ext_resource type="PackedScene" uid="uid://t6nucl1t3nuk" path="res://enemigo.tscn" id="3_tec4y"]
-[ext_resource type="PackedScene" uid="uid://g06rg2bak3wk" path="res://enemigo_2.tscn" id="4_cddf7"]
 [ext_resource type="PackedScene" uid="uid://b71u3jk0d6eg2" path="res://jefe.tscn" id="5_l63k4"]
 [ext_resource type="PackedScene" uid="uid://bviifp34nwlfe" path="res://bala_enemigo.tscn" id="43_x0vmf"]
 
@@ -13,23 +11,16 @@ position = Vector2(7, 142)
 [node name="fondo" type="Node2D" parent="." unique_id=1646217643]
 texture_repeat = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="fondo" unique_id=137842811]
-texture_filter = 2
-texture_repeat = 3
-position = Vector2(530, 186)
-scale = Vector2(0.9683783, 1.5530847)
-texture = ExtResource("1_3g6jh")
+[node name="TextureRect" type="TextureRect" parent="fondo" unique_id=1623724782]
+offset_left = -1638.0
+offset_top = -814.0
+offset_right = 2755.0
+offset_bottom = 1506.0
+texture = ExtResource("1_rq8n4")
+stretch_mode = 1
 
 [node name="Jugador" parent="." unique_id=248435410 instance=ExtResource("2_rq8n4")]
 position = Vector2(522, 198)
-
-[node name="Enemigo" parent="." unique_id=45050113 instance=ExtResource("3_tec4y")]
-visible = false
-position = Vector2(102, 157)
-
-[node name="Enemigo2" parent="." unique_id=1715004828 instance=ExtResource("4_cddf7")]
-visible = false
-position = Vector2(734, 164)
 
 [node name="Jefe" parent="." unique_id=812094762 instance=ExtResource("5_l63k4")]
 position = Vector2(114, 31)

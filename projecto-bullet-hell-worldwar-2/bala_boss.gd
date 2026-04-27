@@ -15,7 +15,6 @@ func _on_body_entered(body):
 		chocó = true
 		if body.has_method("recibir_danio"):
 			body.recibir_danio(1)
-		
 		$AnimatedSprite2D.play("Crash")
 		await $AnimatedSprite2D.animation_finished
 		queue_free()

@@ -38,7 +38,6 @@ func _physics_process(delta):
 		tiempo_invencible = tiempo_invencible - delta
 	var vy = 0
 	var vx = 0
-	
 	if Input.is_physical_key_pressed(KEY_W):
 		vy = vy - 1
 	if Input.is_physical_key_pressed(KEY_S):
@@ -76,7 +75,7 @@ func _physics_process(delta):
 	global_position.y = clamp(global_position.y, lim_arr, lim_abj)
 
 func recibir_danio(cantidad):
-	if escudo == true or tiempo_invencible > 0 or vida_infinita == true:
+	if escudo == true or vida_infinita == true:
 		return
 	vida = vida - cantidad
 	if has_node("CanvasLayer/ProgressBar"):

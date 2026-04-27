@@ -10,8 +10,8 @@ var bala_escena = preload("res://BalaBoss.tscn")
 var jugador = null
 var limite_izquierdo = -1500
 var limite_derecho = 2650
-var limite_arriba = -320
-var limite_abajo = 890
+var limite_arriba = -300
+var limite_abajo = 800
 
 func _ready():
 	add_to_group("grupo_jefes")
