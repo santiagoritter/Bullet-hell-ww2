@@ -20,10 +20,10 @@ texture = ExtResource("1_rq8n4")
 stretch_mode = 1
 
 [node name="Jugador" parent="." unique_id=248435410 instance=ExtResource("2_rq8n4")]
-position = Vector2(522, 198)
+position = Vector2(81, 181)
 
 [node name="Jefe" parent="." unique_id=812094762 instance=ExtResource("5_l63k4")]
-position = Vector2(114, 31)
+position = Vector2(529, -184)
 
 [node name="BalaEnemigo" parent="." unique_id=751385335 instance=ExtResource("43_x0vmf")]
 position = Vector2(376, -550)

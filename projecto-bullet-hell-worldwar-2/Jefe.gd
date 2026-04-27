@@ -10,7 +10,7 @@ var bala_escena = preload("res://BalaBoss.tscn")
 var jugador = null
 var limite_izquierdo = -1500
 var limite_derecho = 2650
-var limite_arriba = -300
+var limite_arriba = -200
 var limite_abajo = 800
 
 func _ready():
@@ -63,7 +63,11 @@ func hacer_combo():
 			await get_tree().create_timer(0.15).timeout
 	else:
 		var ang = (jugador.global_position - global_position).angle()
-		crear_bala(ang); crear_bala(ang+0.3); crear_bala(ang-0.3)
+		crear_bala(ang); 
+		crear_bala(ang+0.25);
+		crear_bala(ang+0.50);
+		crear_bala(ang-0.25)
+		crear_bala(ang-0.50)
 		await get_tree().create_timer(0.8).timeout
 	esta_atacando = false
 
