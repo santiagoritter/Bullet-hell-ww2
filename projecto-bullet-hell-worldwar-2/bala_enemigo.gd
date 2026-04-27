@@ -13,12 +13,10 @@ func _ready():
 	if jugador != null:
 		dir_x = jugador.global_position.x - global_position.x
 		dir_y = jugador.global_position.y - global_position.y
-		
 		var direccion = Vector2(dir_x, dir_y).normalized()
 		dir_x = direccion.x
 		dir_y = direccion.y
 		rotation = direccion.angle()
-
 func _physics_process(delta):
 	if choco == false:
 		position.x = position.x + (dir_x * velocidad * delta)
@@ -32,10 +30,8 @@ func _on_body_entered(body):
 	if body.name == "Jugador_personaje" and choco == false:
 		choco = true
 		$CollisionShape2D.set_deferred("disabled", true)
-		
 		if body.has_method("recibir_danio"):
 			body.recibir_danio(1)
-		
 		$AnimatedSprite2D.play("Crash")
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
