@@ -16,7 +16,7 @@ texture_repeat = 3
 [node name="Sprite2D" type="Sprite2D" parent="fondo" unique_id=137842811]
 texture_filter = 2
 texture_repeat = 3
-position = Vector2(575, 195)
+position = Vector2(530, 186)
 scale = Vector2(0.9683783, 1.5530847)
 texture = ExtResource("1_3g6jh")
 
@@ -35,5 +35,4 @@ position = Vector2(734, 164)
 position = Vector2(114, 31)
 
 [node name="BalaEnemigo" parent="." unique_id=751385335 instance=ExtResource("43_x0vmf")]
-visible = false
 position = Vector2(376, -550)

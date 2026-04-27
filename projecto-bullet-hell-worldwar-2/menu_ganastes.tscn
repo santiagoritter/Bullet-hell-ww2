@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dc7sy54ge70i3"]
 
 [ext_resource type="Script" uid="uid://b3f3w0pvwhq3b" path="res://menu_ganastes.gd" id="1_u6g80"]
+[ext_resource type="Texture2D" uid="uid://bf6joo8q7ei73" path="res://sanmaWin.jpg" id="2_iso0i"]
 
 [node name="MenuGanastes" type="Control" unique_id=776257785]
 layout_mode = 3
@@ -11,29 +12,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u6g80")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1085434559]
+position = Vector2(625, 387)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_iso0i")
+
 [node name="Victoria" type="Label" parent="." unique_id=1063562718]
 layout_mode = 0
-offset_left = 457.0
-offset_top = 50.0
-offset_right = 716.0
-offset_bottom = 79.0
+offset_left = 540.0
+offset_top = 65.0
+offset_right = 799.0
+offset_bottom = 94.0
 text = "Victoria!!!!"
 horizontal_alignment = 1
 
 [node name="1" type="Button" parent="." unique_id=82868687]
 layout_mode = 0
-offset_left = 686.0
-offset_top = 255.0
-offset_right = 881.0
-offset_bottom = 355.0
+offset_left = 676.0
+offset_top = 491.0
+offset_right = 871.0
+offset_bottom = 591.0
 text = "Jugar Nivel 2"
 
 [node name="2" type="Button" parent="." unique_id=540331844]
 layout_mode = 0
-offset_left = 317.0
-offset_top = 253.0
-offset_right = 501.0
-offset_bottom = 354.0
+offset_left = 331.0
+offset_top = 498.0
+offset_right = 515.0
+offset_bottom = 599.0
 text = "Menu principal"
 
 [connection signal="pressed" from="1" to="." method="_on_1_pressed"]

@@ -11,6 +11,7 @@ var codigo_konami = [KEY_UP, KEY_UP, KEY_DOWN, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KE
 var paso_codigo = 0
 var vida_infinita = false
 
+
 var lim_izq = -1500
 var lim_der = 2650
 var lim_arr = -320
@@ -94,5 +95,3 @@ func recibir_danio(cantidad):
 	
 	if vida <= 0:
 		get_tree().change_scene_to_file("res://menu_perdistes.tscn")
-	else:
-		tiempo_invencible = 1.0

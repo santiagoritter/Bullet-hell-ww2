@@ -9,9 +9,13 @@ var esta_atacando = false
 var bala_escena = preload("res://BalaBoss.tscn")
 var jugador = null
 
+var limite_izquierdo = -1500
+var limite_derecho = 2650
+var limite_arriba = -320
+var limite_abajo = 890
+
 func _ready():
 	add_to_group("grupo_jefes")
-	
 	jugador = get_tree().get_root().find_child("Jugador_personaje", true, false)
 	
 	if has_node("BarraVidaJefe"):
@@ -34,10 +38,10 @@ func _physics_process(delta):
 			timer_invencible = 1.2
 
 	if esta_atacando == false:
-		if dist > dist_objetivo + 50:
+		if dist > dist_objetivo + 20:
 			velocity = dir * velocidad
 			$AnimatedSprite2D.play("Caminar")
-		elif dist < dist_objetivo - 50:
+		elif dist < dist_objetivo - 20:
 			velocity = dir * -velocidad
 			$AnimatedSprite2D.play("Caminar")
 		else:
@@ -51,8 +55,13 @@ func _physics_process(delta):
 			timer_pum = 0.0
 			hacer_combo()
 
-	if velocity.x < 0: $AnimatedSprite2D.flip_h = true
-	elif velocity.x > 0: $AnimatedSprite2D.flip_h = false
+	global_position.x = clamp(global_position.x, limite_izquierdo, limite_derecho)
+	global_position.y = clamp(global_position.y, limite_arriba, limite_abajo)
+
+	if (jugador.global_position.x - global_position.x) < 0: 
+		$AnimatedSprite2D.flip_h = true
+	else: 
+		$AnimatedSprite2D.flip_h = false
 
 func hacer_combo():
 	esta_atacando = true
@@ -81,9 +90,7 @@ func recibir_danio(puntos):
 	
 	if vida <= 0:
 		remove_from_group("grupo_jefes")
-		
 		var restantes = get_tree().get_nodes_in_group("grupo_jefes").size()
-		
 		if restantes == 0:
 			get_tree().change_scene_to_file("res://menu_ganastes.tscn")
 		else:
